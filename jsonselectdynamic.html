@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title> SELECT Element with JSON using JavaScript</title>
+</head>
+<body style="font:14px Calibri;">
+    <p>
+        <input type="button" nstyle="margin:10px 0;" onclick="populateSelect()" value="Click to Populate SELECT with JSON" />
+    </p>
+
+    <!--The SELECT element.-->
+    <select id="sel" onchange="show(this)">
+        <option value="">-- Select --</option>
+    </select>
+
+    <p id="msg"></p>
+</body>
+
+<script>
+    function populateSelect() {
+        // THE JSON ARRAY.
+        var UserID = [
+            {
+                "ID": "001",
+                "Name": "Admin"
+            },
+            {
+                "ID": "002",
+                "Name": "admin"
+            },
+            {
+                "ID": "003",
+                "Name": "ADMIN"
+            },
+        ];
+
+        var ele = document.getElementById('sel');
+        for (var i = 0; i < UserID.length; i++) {
+            // POPULATE SELECT ELEMENT WITH JSON.
+            ele.innerHTML = ele.innerHTML +
+                '<option value="' + UserID[i]['ID'] + '">' + UserID[i]['Name'] + '</option>';
+        }
+    }
+
+    function show(ele) {
+        // GET THE SELECTED VALUE FROM <select> ELEMENT AND SHOW IT.
+        var msg = document.getElementById('msg');
+        msg.innerHTML = 'Selected Name: <b>' + ele.options[ele.selectedIndex].text + '</b> </br>' +
+            'ID: <b>' + ele.value + '</b>';
+    }
+</script>
+</html>
